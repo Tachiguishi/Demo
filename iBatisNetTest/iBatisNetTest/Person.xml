@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<sqlMap namespace="Ibatis" xmlns="http://ibatis.apache.org/mapping" xmlns:xls="http://www.w3.org/2001/XMLSchema-instance">
+    <alias>
+        <!-- alias:是别名，type:[命名空间.类名,命名空间] -->
+        <typeAlias alias="Person" type="iBatisNetTest.Domain.Person,iBatisNetTest" />
+    </alias>
+    <resultMaps>
+        <resultMap id="PersonMap" class="Person">
+            <result property="Id" column="ID"/>
+            <result property="Name" column="NAME"/>
+        </resultMap>
+    </resultMaps>
+  <statements>
+    <select id="SelectAllPerson" resultMap="PersonMap">
+      select * from PDMS.person
+    </select>
+  </statements>
+</sqlMap>
