@@ -1,5 +1,5 @@
-###SqlMapper类###
-iBatis中，加载/分析配置文件和映射文件是在创建SqlMapper实例时进行的。对数据库的操作是通过SqlMapper实例进行
+### SqlMapper类
+iBatis中，加载/分析配置文件和映射文件是在创建SqlMapper实例时进行的。对数据库的操作是通过SqlMapper实例进行  
 创建方式(需要添加`using IBatisNet.DataMapper;`)：
 ```c#
 ISqlMapper mapper = Mapper.Instance();
@@ -31,11 +31,11 @@ public void InitMapper(string sqlMapperPath)
 ```
 [详细解释](http://www.iloveher.cn/ibatis/hybridwebthreadsessionstore.html)
 
-###数据库操作###
-####Select####
-1. **QueryForList**
-  返回List<T>强类型数据集合
-  方法原型：
+### 数据库操作
+#### Select
+1. **QueryForList**  
+  返回List<T>强类型数据集合  
+  方法原型：  
   ```c#
   public IList<T> QueryForList<T>(string statementName, object parameterObject);
   public IList QueryForList(string statementName, object parameterObject);
@@ -44,29 +44,29 @@ public void InitMapper(string sqlMapperPath)
   public IList<T> QueryForList<T>(string statementName, object parameterObject, int skipResults,int maxResults);
   public IList QueryForList(string statementName, object parameterObject, int skipResult
   ``` 
-  可以看出，其实只是3个参数不同方法，只是分为泛型与非泛型两个版本而已。
+  可以看出，其实只是3个参数不同方法，只是分为泛型与非泛型两个版本而已。  
   参数skipResults，表示从结果行掉过skipResults行后返回，maxResults表示返回的行数。这个在分页中应该会用到。
-2. **QueryForObject**
-  返回一行数据对应的实体类实例
-  方法原型:
+2. **QueryForObject**  
+  返回一行数据对应的实体类实例  
+  方法原型:  
   ```c#
   public object QueryForObject(string statementName, object parameterObject);
   public T QueryForObject<T>(string statementName, object parameterObject);
   public T QueryForObject<T>(string statementName, object parameterObject, T instanceObject);
   public object QueryForObject(string statementName, object parameterObject, object resultObject)
   ```
-3. **QueryWithRowDelegate**
-  通过委托过滤返回数据
-  方法原型：
+3. **QueryWithRowDelegate**  
+  通过委托过滤返回数据  
+  方法原型：  
   ```c#
   IList<T> QueryWithRowDelegate<T>(string statementName, object parameterObject, RowDelegate<T> rowDelegate);
     IList QueryWithRowDelegate(string statementName, object parameterObject, RowDelegate rowDelegate);
   ```
-4. **QueryForDictionary**
-5. **QueryForMap**
+4. **QueryForDictionary**  
+5. **QueryForMap**  
 
-####Insert####
-`public object Insert(String statementName, Object parameterObject)`
+#### Insert
+`public object Insert(String statementName, Object parameterObject)`  
 返回值为新插入行的主键(可能返回的为空值)
 ```xml
 <insert id="InsertOne" resultMap="Person">
@@ -83,9 +83,9 @@ p.Name = "曹操";
 return (int)mapper.Insert("InsertOne",p);
 ```
 
-####Update####
-`public int Update(String statementName, Object parameterObject)`
-返回值为修改的行数
+#### Update
+`public int Update(String statementName, Object parameterObject)` 
+返回值为修改的行数  
 ```xml
 <update id="UpdateOne" resultMap="Person">
       Update Person Set Name = #Name# Where Id = #Id#
@@ -98,9 +98,9 @@ p.Name = "张三";
 return (int)mapper.Update("UpdateOne", p);
 ```
 
-####Delete####
-`public int Delete(String statementName, Object parameterObject)`
-返回值为删除的行数
+#### Delete
+`public int Delete(String statementName, Object parameterObject)`  
+返回值为删除的行数  
 ```xml
 <delete id="DeleteOne" resultMap="Person">
     Delete Person Where Id = #Id#
