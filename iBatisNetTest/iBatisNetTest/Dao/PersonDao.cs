@@ -12,8 +12,15 @@ namespace iBatisNetTest.Dao
         public IList<Person> GetList()
         {
             ISqlMapper mapper = Mapper.Instance();
-            IList<Person> ListPerson = mapper.QueryForList<Person>("SelectAllPerson", null);  //这个"SelectAllPerson"就是xml映射文件的Id
+            IList<Person> ListPerson = mapper.QueryForList<Person>("Ibatis.SelectAllPerson", null);  //这个"SelectAllPerson"就是xml映射文件的Id
             return ListPerson;
+        }
+
+        public void AddPerson(Person person)
+        {
+            ISqlMapper mapper = Mapper.Instance();
+            mapper.Insert("Ibatis.InsertPerson", person);
+            //return i;
         }
     }
 }

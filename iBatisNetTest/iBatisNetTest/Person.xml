@@ -14,5 +14,9 @@
     <select id="SelectAllPerson" resultMap="PersonMap">
       select * from PDMS.person
     </select>
+    <insert id="InsertPerson" parameterClass="Person">
+      INSERT INTO PDMS.person (ID,NAME)
+      VALUES  (#Id#,#Name#)
+    </insert>
   </statements>
 </sqlMap>
