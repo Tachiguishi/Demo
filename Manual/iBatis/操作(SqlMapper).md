@@ -36,32 +36,32 @@ public void InitMapper(string sqlMapperPath)
 1. **QueryForList**  
   返回List<T>强类型数据集合  
   方法原型：  
-  ```c#
+```C#
   public IList<T> QueryForList<T>(string statementName, object parameterObject);
   public IList QueryForList(string statementName, object parameterObject);
   public void QueryForList<T>(string statementName, object parameterObject, IList<T> resultObject);
   public void QueryForList(string statementName, object parameterObject, IList resultObject);
   public IList<T> QueryForList<T>(string statementName, object parameterObject, int skipResults,int maxResults);
   public IList QueryForList(string statementName, object parameterObject, int skipResult
-  ``` 
+```
   可以看出，其实只是3个参数不同方法，只是分为泛型与非泛型两个版本而已。  
   参数skipResults，表示从结果行掉过skipResults行后返回，maxResults表示返回的行数。这个在分页中应该会用到。
 2. **QueryForObject**  
   返回一行数据对应的实体类实例  
   方法原型:  
-  ```c#
+```c#
   public object QueryForObject(string statementName, object parameterObject);
   public T QueryForObject<T>(string statementName, object parameterObject);
   public T QueryForObject<T>(string statementName, object parameterObject, T instanceObject);
   public object QueryForObject(string statementName, object parameterObject, object resultObject)
-  ```
+```
 3. **QueryWithRowDelegate**  
   通过委托过滤返回数据  
   方法原型：  
-  ```c#
+```c#
   IList<T> QueryWithRowDelegate<T>(string statementName, object parameterObject, RowDelegate<T> rowDelegate);
     IList QueryWithRowDelegate(string statementName, object parameterObject, RowDelegate rowDelegate);
-  ```
+```
 4. **QueryForDictionary**  
 5. **QueryForMap**  
 
